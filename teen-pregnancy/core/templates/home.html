@@ -1,0 +1,42 @@
+<!-- home.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teen Pregnancy Support</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-center my-4">Welcome to Teen Pregnancy Support</h1>
+
+        <h2>Resources</h2>
+        <ul>
+            <!-- Loop through resources and display links -->
+            {% for resource in resources %}
+                <li><a href="{% url 'resource_detail' resource.id %}">{{ resource.title }}</a></li>
+            {% empty %}
+                <li>No resources available at the moment.</li>
+            {% endfor %}
+        </ul>
+
+        <h2>Forum Posts</h2>
+        <ul>
+            <!-- Loop through forum posts and display links -->
+            {% for post in forum_posts %}
+                <li><a href="{% url 'forum_post_detail' post.id %}">{{ post.title }}</a></li>
+            {% empty %}
+                <li>No forum posts yet. Be the first to post!</li>
+            {% endfor %}
+        </ul>
+
+        <div class="mt-4">
+            <a href="{% url 'submit_resource' %}" class="btn btn-primary">Submit a Resource</a>
+            <a href="{% url 'submit_forum_post' %}" class="btn btn-primary">Submit a Forum Post</a>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,22 @@
+<!-- core/templates/submit_resource.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Add this to the <head> section of your templates -->
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Submit Resource</title>
+</head>
+<body>
+    <h1>Submit a New Resource</h1>
+    <form method="POST" class="container mt-4">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+    
+    <a href="{% url 'home' %}">Back to Home</a>
+</body>
+</html>
